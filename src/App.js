@@ -1,12 +1,13 @@
 import React from "react";
 import "./App.css";
+import { useLocalStorageState } from "./utils";
 import { FormInput } from "./components/form-input.js";
 import { FormCheckbox } from "./components/form-checkbox";
 import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
-  const [todolist, setTodolist] = React.useState([]);
-  const [finishedList, setFinishedList] = React.useState([]);
+  const [todolist, setTodolist] = useLocalStorageState("todo", []);
+  const [finishedList, setFinishedList] = useLocalStorageState("finish", []);
 
   function handleSubmit(element) {
     setTodolist((prev) => [...prev, element]);
