@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Checkbox } from "@chakra-ui/react";
-import { Button, ButtonGroup } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 
 function FormCheckbox({ onDelete, onCheck, todolistArr, finishedArr }) {
   const renderUncheckedItems = () => {
@@ -28,12 +28,14 @@ function FormCheckbox({ onDelete, onCheck, todolistArr, finishedArr }) {
     return finishedArr.map((element) => {
       return (
         <React.Fragment key={element.key}>
-          <Checkbox
-            defaultChecked
-            onChange={(event) => onCheck(event, element)}
-          >
-            {element.name}
-          </Checkbox>
+          <s>
+            <Checkbox
+              defaultChecked
+              onChange={(event) => onCheck(event, element)}
+            >
+              {element.name}
+            </Checkbox>
+          </s>
           <Button
             size="xs"
             colorScheme={"red"}

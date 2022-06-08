@@ -3,7 +3,7 @@ import "./App.css";
 import { useLocalStorageState } from "./utils";
 import { FormInput } from "./components/form-input.js";
 import { FormCheckbox } from "./components/form-checkbox";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Container } from "@chakra-ui/react";
 
 function App() {
   const [todolist, setTodolist] = useLocalStorageState("todo", []);
@@ -41,14 +41,16 @@ function App() {
 
   return (
     <ChakraProvider>
-      <div className="App">TODOLIST</div>
-      <FormInput onSubmitHandle={handleSubmit} />
-      <FormCheckbox
-        onDelete={handleDelete}
-        onCheck={handleCheck}
-        todolistArr={todolist}
-        finishedArr={finishedList}
-      />
+      <Container>
+        <div className="App">TODOLIST</div>
+        <FormInput onSubmitHandle={handleSubmit} />
+        <FormCheckbox
+          onDelete={handleDelete}
+          onCheck={handleCheck}
+          todolistArr={todolist}
+          finishedArr={finishedList}
+        />
+      </Container>
     </ChakraProvider>
   );
 }
