@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { Checkbox } from "@chakra-ui/react";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 
-function FormCheckbox({ onCheck, todolistArr, finishedArr }) {
+function FormCheckbox({ onDelete, onCheck, todolistArr, finishedArr }) {
   const renderUncheckedItems = () => {
     console.log(todolistArr);
     return todolistArr.map((element) => {
@@ -10,6 +11,13 @@ function FormCheckbox({ onCheck, todolistArr, finishedArr }) {
           <Checkbox onChange={(event) => onCheck(event, element)}>
             {element.name}
           </Checkbox>
+          <Button
+            size="xs"
+            colorScheme={"red"}
+            onClick={() => onDelete(element, "unchecked")}
+          >
+            delete
+          </Button>
           <br />
         </React.Fragment>
       );
@@ -26,6 +34,13 @@ function FormCheckbox({ onCheck, todolistArr, finishedArr }) {
           >
             {element.name}
           </Checkbox>
+          <Button
+            size="xs"
+            colorScheme={"red"}
+            onClick={() => onDelete(element, "checked")}
+          >
+            delete
+          </Button>
           <br />
         </React.Fragment>
       );
@@ -43,53 +58,3 @@ function FormCheckbox({ onCheck, todolistArr, finishedArr }) {
 }
 
 export { FormCheckbox };
-// import React, { useEffect } from "react";
-// import { Checkbox } from "@chakra-ui/react";
-
-// function FormCheckbox({ onCheck, todolistArr }) {
-//   const [counter, setCounter] = React.useState(0);
-//   const uncheckedArr = todolistArr.filter((todo) => todo.value === false);
-//   const checkedArr = todolistArr.filter((todo) => todo.value === true);
-
-//   const _onCheck = (index) => {
-//     onCheck(index);
-//     // setCounter((prev) => ++prev);
-//   };
-
-//   const renderUncheckedItems = () => {
-//     return uncheckedArr.map((element, index) => {
-//       return (
-//         <>
-//           <Checkbox onChange={() => _onCheck(index)}>{element.name}</Checkbox>
-//           <br />
-//         </>
-//       );
-//     });
-//   };
-
-//   console.log("rerender checkbox");
-
-//   const renderCheckedItems = () => {
-//     return checkedArr.map((element, index) => {
-//       return (
-//         <>
-//           <Checkbox defaultChecked onChange={() => _onCheck(index)}>
-//             {element.name}
-//           </Checkbox>
-//           <br />
-//         </>
-//       );
-//     });
-//   };
-
-//   return (
-//     <>
-//       <h1>To do:</h1>
-//       {renderUncheckedItems()}
-//       <h1>Finished:</h1>
-//       {renderCheckedItems()}
-//     </>
-//   );
-// }
-
-// export { FormCheckbox };
