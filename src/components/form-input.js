@@ -1,4 +1,5 @@
 import React from "react";
+import "../App.css";
 import { Input } from "@chakra-ui/react";
 
 function FormInput({ onSubmitHandle }) {
@@ -16,7 +17,7 @@ function FormInput({ onSubmitHandle }) {
 
   return (
     <form className="App" onSubmit={handleSubmit}>
-      <Input ref={inputRef}></Input>
+      <Input placeholder="Add a task..." ref={inputRef} m="0 3"></Input>
     </form>
   );
 }
