@@ -6,7 +6,6 @@ import { Text, Box } from "@chakra-ui/react";
 
 function FormCheckbox({ onDelete, onCheck, todolistArr, finishedArr }) {
   const renderUncheckedItems = () => {
-    console.log(todolistArr);
     return todolistArr.map((element) => {
       return (
         <React.Fragment key={element.key}>

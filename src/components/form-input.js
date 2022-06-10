@@ -8,7 +8,6 @@ function FormInput({ onSubmitHandle }) {
   function handleSubmit(e) {
     e.preventDefault();
     if (!inputRef.current.value) return;
-    // window.localStorage.setItem("");
     const ms = new Date();
     const element = { name: inputRef.current.value, key: ms.getMilliseconds() };
     onSubmitHandle(element);
