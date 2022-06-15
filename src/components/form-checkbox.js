@@ -3,15 +3,17 @@ import "../App.css";
 import { Checkbox } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import { Text, Box } from "@chakra-ui/react";
+import { useTodo } from "../useTodo";
 
-function FormCheckbox({ onDelete, onCheck, todolistArr, finishedArr }) {
+function FormCheckbox() {
+  const { todolist, finishedList, filterTodo, deleteTodo } = useTodo();
   const renderUncheckedItems = () => {
-    return todolistArr.map((element) => {
+    return todolist.map((element) => {
       return (
         <React.Fragment key={element.key}>
           <Box display="flex" m="-2">
             <Checkbox
-              onChange={(event) => onCheck(event, element)}
+              onChange={(event) => filterTodo(event, element)}
               className="task"
               pl="3"
             >
@@ -22,7 +24,7 @@ function FormCheckbox({ onDelete, onCheck, todolistArr, finishedArr }) {
               ml="auto"
               size="xs"
               colorScheme={"red"}
-              onClick={() => onDelete(element, "unchecked")}
+              onClick={() => deleteTodo(element, "unchecked")}
               flexShrink="0"
             >
               delete
@@ -35,13 +37,13 @@ function FormCheckbox({ onDelete, onCheck, todolistArr, finishedArr }) {
   };
 
   const renderCheckedItems = () => {
-    return finishedArr.map((element) => {
+    return finishedList.map((element) => {
       return (
         <React.Fragment key={element.key}>
           <Box display="flex" m="-2">
             <Checkbox
               defaultChecked
-              onChange={(event) => onCheck(event, element)}
+              onChange={(event) => filterTodo(event, element)}
               className="task"
               pl="3"
             >
@@ -54,7 +56,7 @@ function FormCheckbox({ onDelete, onCheck, todolistArr, finishedArr }) {
               ml="auto"
               size="xs"
               colorScheme={"red"}
-              onClick={() => onDelete(element, "checked")}
+              onClick={() => deleteTodo(element, "checked")}
             >
               delete
             </Button>
